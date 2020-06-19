@@ -9,6 +9,7 @@ class EditProfileTab extends React.Component {
         name: this.props.userdata1.name,  
         address:this.props.userdata1.address,
         phone: this.props.userdata1.phoneNumber,
+        cur: this.props.cur,
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -72,35 +73,35 @@ class EditProfileTab extends React.Component {
   }
 
     render() {
-      console.log(this.state.user);
+      var tab= "tab-pane";
         return (
-          <div class="tab-pane" id="edit">
-            <h4 class="m-y-2">Edit Profile</h4>
+          <div className={tab} id="edit">
+            <h4 className="m-y-2">Edit Profile</h4>
             <form role="form">
-              <div class="form-group row">
-                <label htmlFor="Name" class="col-lg-3 col-form-label form-control-label">Tên</label>
-                <div class="col-lg-9">
-                  <input class="form-control" name="name" onChange={this.handleChange} type="text" value={this.state.name} />
+              <div className="form-group row">
+                <label htmlFor="Name" className="col-lg-3 col-form-label form-control-label">Tên</label>
+                <div className="col-lg-9">
+                  <input className="form-control" name="name" onChange={this.handleChange} type="text" value={this.state.name} />
                 </div>
               </div>
-              <div class="form-group row">
-                <label htmlFor="Address" class="col-lg-3 col-form-label form-control-label">Địa chỉ</label>
-                <div class="col-lg-9">
-                  <input class="form-control" name="address" type="text" onChange={this.handleChange} value={this.state.address}
+              <div className="form-group row">
+                <label htmlFor="Address" className="col-lg-3 col-form-label form-control-label">Địa chỉ</label>
+                <div className="col-lg-9">
+                  <input className="form-control" name="address" type="text" onChange={this.handleChange} value={this.state.address}
                     placeholder="Street" />
                 </div>
               </div>
-              <div class="form-group row">
-                <label htmlFor="Phone" class="col-lg-3 col-form-label form-control-label">Số điện thoại</label>
-                <div class="col-lg-9">
-                  <input class="form-control" name="phone" onChange={this.handleChange} type="tel" value={this.state.phone} maxlength="10" />
+              <div className="form-group row">
+                <label htmlFor="Phone" className="col-lg-3 col-form-label form-control-label">Số điện thoại</label>
+                <div className="col-lg-9">
+                  <input className="form-control" name="phone" onChange={this.handleChange} type="tel" value={this.state.phone} maxLength="10" />
                 </div>
               </div>
-              <div class="form-group row">
-                <label class="col-lg-3 col-form-label form-control-label"></label>
-                <div class="col-lg-9">
-                  <input type="reset" class="btn btn-secondary" value="Cancel" />
-                  <input type="button" class="btn btn-primary" onClick={this.handleSubmit} value="Save Changes" />
+              <div className="form-group row">
+                <label className="col-lg-3 col-form-label form-control-label"></label>
+                <div className="col-lg-9">
+                  <input type="reset" className="btn btn-secondary" value="Cancel" />
+                  <input type="button" className="btn btn-primary" onClick={this.handleSubmit} value="Save Changes" />
                 </div>
               </div>
             </form>

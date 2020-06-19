@@ -20,7 +20,7 @@ class Footer extends React.Component {
           <br /><b>THỜI GIAN LÀM VIỆC: 08:30 - 21:30 TỪ THỨ 2 ĐẾN CHỦ NHẬT</b>
           <br /><br />
           <a href="http://online.gov.vn/CustomWebsiteDisplay.aspx?DocId=52800">
-            <img src="images/logobct.png" style={{maxWidth: '400px'}} />
+            <img src="/images/logobct.png" style={{maxWidth: '400px'}} />
           </a>
         </div>
         <div className="col-6">

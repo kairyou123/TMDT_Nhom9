@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import isLogin from '../Services/isLogin.js';
 import Oidc from 'oidc-client';
+import { Link } from "react-router-dom";
 
 class ProductList extends React.Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class ProductList extends React.Component {
           };
         this.state = {
             mgr : new Oidc.UserManager(config),
+            products_without: [],
             products: [],
             search: "",
             currentPage: 1,
@@ -34,7 +36,7 @@ class ProductList extends React.Component {
     }
 
     async componentDidMount() {
-        console.log(this.state.categoryId);
+        window.scrollTo(0, 0);
         this.getProducts();
     }
     
@@ -49,8 +51,8 @@ class ProductList extends React.Component {
             }).filter((p) => {  
             return parseInt(p.catalogID) === parseInt(this.state.categoryId);
             }); 
-            console.log(filter);
             this.setState({
+                products_without: result.data,
                 products: filter, 
                 catalog : filter[0].catalog.name,
                 totalPage: Math.ceil(filter.length / this.state.onePageShow),
@@ -59,6 +61,25 @@ class ProductList extends React.Component {
         .catch(error => {
             
         });
+    }
+    componentWillReceiveProps(nextProps)
+    {
+        if (nextProps.id !== this.state.categoryId) {
+            this.setState({
+                categoryId: nextProps.id,
+            });  
+            var filter =this.state.products_without.sort((a,b) => {
+                return a.priceDiscount-b.priceDiscount;   
+            }).filter((p) => {  
+            return parseInt(p.catalogID) === parseInt(nextProps.id);
+            }); 
+
+            this.setState({
+                products: filter, 
+                catalog : filter[0].catalog.name,
+                totalPage: Math.ceil(filter.length / this.state.onePageShow),
+            });  
+        }
     }
 
     handleChange(e) {
@@ -73,7 +94,6 @@ class ProductList extends React.Component {
     handleSubmit = async (e) => {
         await this.handleChange(e);
         e.preventDefault();
-        console.log(this.state.sort);
         var filter_search = this.state.products.sort((a,b) => {
             if(this.state.sort == "saab") {
                 return a.priceDiscount-b.priceDiscount;
@@ -147,12 +167,12 @@ class ProductList extends React.Component {
                 <div className="product-category-content-products col-md-3" key={i}>
                         <div className="border">
                             <div className="product-category-content-products-img">
-                            <a href={"/product-detail/"+product.slug}>
+                            <Link to={"/product-detail/"+product.slug}>
                                 <img src={'https://localhost:5001/image/' + product.image} alt="img" />
-                            </a>
+                            </Link>
                             <div className="products-hover">
                                 <p className="products-hover-see-more">
-                                <a href={"/product-detail/"+product.slug}>Nhấn để xem chi tiết</a>
+                                <Link to={"/product-detail/"+product.slug}>Nhấn để xem chi tiết</Link>
                                 </p>
                                 <div className="products-hover-btn">
                                 <p><a href="#" onClick={this.Addcart} data-product={product.id}>Thêm vào giỏ hàng</a></p>

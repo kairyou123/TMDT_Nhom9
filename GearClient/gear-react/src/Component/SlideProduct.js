@@ -3,6 +3,7 @@ import Swiper from 'react-id-swiper';
 import axios from 'axios';
 import isLogin from '../Services/isLogin.js';
 import Oidc from 'oidc-client';
+import { Link } from "react-router-dom";
 
 class SlideProduct extends React.Component{
   constructor(props) {
@@ -118,16 +119,16 @@ render(){
   let plist = this.state.products.map((product,i)=>{
     return(
       <div className="swiper-slide" key={i}>
-            <a href={"/product-detail/"+product.slug}>
+            <Link to={"/product-detail/"+product.slug}>
               <div className="products">
                 <div className="products-img">
                   <img  src={'https://localhost:5001/image/' + product.image}  style={{flex: 1, resizeMode: 'stretch', width: '100%', height: '200px'}} alt="img"/>
                   <div className="products-hover">
                     <p className="products-hover-see-more">
-                      <a href={"/product-detail/"+product.slug}>Nhấn để xem chi tiết</a>
+                      <Link to={"/product-detail/"+product.slug}>Nhấn để xem chi tiết</Link>
                     </p>
                     <div className="products-hover-btn">
-                      <p><a href="#" onClick={this.Addcart} data-product={product.id}>Thêm vào giỏ hàng</a></p>
+                      <p><Link to="#" onClick={this.Addcart} data-product={product.id}>Thêm vào giỏ hàng</Link></p>
                     </div>
                   </div>
                 </div>
@@ -141,7 +142,7 @@ render(){
                   <p>{product.priceDiscount.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}</p>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
     )
   })
@@ -152,7 +153,7 @@ render(){
     <div>
       <div className="title-content-index">
         <p className="title-content-index-name">Chuột máy tính</p>
-        <p className="title-content-index-more"><a href="/product-category/1">Xem thêm</a></p>
+        <p className="title-content-index-more"><Link to="/product-category/1">Xem thêm</Link></p>
       </div>
       <div className="content-index">
       <Swiper key={this.state.products.length} {...params}>

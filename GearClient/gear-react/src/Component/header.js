@@ -159,8 +159,7 @@ class Header extends React.Component {
                 <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i className="fas fa-user"></i></a>
                 <div className="dropdown-menu dropleft">
                 <Link to="/admin/user" className="dropdown-item" href="#">Trang quản lý</Link>
-                <Link className="dropdown-item" to="/profile/user">Thông tin tài khoản</Link>
-                <Link className="dropdown-item" to="/profile/order">Theo dõi đơn hàng</Link>
+                <Link className="dropdown-item" to="/profile/user">Tài khoản/Đơn hàng</Link>
                 <a className="dropdown-item" onClick={this.Logout}>Đăng xuất</a>
                 </div>
                 </li>
@@ -171,8 +170,7 @@ class Header extends React.Component {
                 <li className="nav-item dropdown mr-auto dropleft"> 
                 <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i className="fas fa-user"></i></a>
                 <div className="dropdown-menu dropleft">
-                <Link className="dropdown-item" to="/profile/user">Thông tin tài khoản</Link>
-                <Link className="dropdown-item" to="/profile/order">Theo dõi đơn hàng</Link>
+                <Link className="dropdown-item" to="/profile/user">Tài khoản/Đơn hàng</Link>
                 <a className="dropdown-item" onClick={this.Logout}>Đăng xuất</a>
                 </div>
                 </li>
@@ -203,7 +201,7 @@ class Header extends React.Component {
         const {isLogin} = this.state;
         let clist = this.state.catalogs.map((catalog,i)=>{
             return(
-                <a href= {'/product-category/'+ catalog.id} className="dropdown-item"  key={i}>{catalog.name}</a>
+                <Link to= {'/product-category/'+ catalog.id} className="dropdown-item"  key={i}>{catalog.name}</Link>
             )
         })
         return (

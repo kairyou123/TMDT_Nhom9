@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import isLogin from '../Services/isLogin.js';
 import Oidc from 'oidc-client';
+import { Link } from "react-router-dom";
 
 class SearchList extends React.Component {
     constructor(props) {
@@ -139,12 +140,12 @@ class SearchList extends React.Component {
                 <div class="search-content-products col-md-3">
                     <div class="border">
                         <div class="search-content-products-img">
-                        <a href={"/product-detail/"+product.slug}>
+                        <Link to={"/product-detail/"+product.slug}>
                             <img src={'https://localhost:5001/image/' + product.image} alt="img" />
-                        </a>
+                        </Link>
                         <div class="products-hover">
                             <p class="products-hover-see-more">
-                            <a href={"/product-detail/"+product.slug}>Nhấn để xem chi tiết</a>
+                            <Link to={"/product-detail/"+product.slug}>Nhấn để xem chi tiết</Link>
                             </p>
                             <div class="products-hover-btn">
                             <p><a href="#" onClick={this.Addcart} data-product={product.id}>Thêm vào giỏ hàng</a></p>

@@ -94,7 +94,7 @@ class UserEdit extends React.Component {
     handleInputError = () => {
         return new Promise((resolve, reject) => {
             if(!this.state.password.match(/^(?=.*[a-z])(?=.*\d)(?=.*[A-Z])(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{4,}$/) && this.state.password !== ""){
-                reject("Mật khẩu ít nhất 4 chữ cái và có ít nhất 1 chữ in hoa, 1 chữ thường, 1 chữ số");
+                reject("Mật khẩu ít nhất 4 chữ cái và có ít nhất 1 chữ in hoa, 1 chữ thường, 1 chữ số, với 1 chữ cái đặc biệt");
             }
 
             if(this.state.passwordCheck !== this.state.password){

@@ -13,13 +13,19 @@ class ProfileTab extends React.Component {
     
     handleChange(e){}
 
+    componentWillReceiveProps(nextProps)
+    {    
+        this.setState({
+          cur: nextProps.cur,
+        });  
+    }
     componentDidMount(){
 
     }
 
     render() {
         var tab = "tab-pane active profile";
-        if(this.state.cur === "order")
+        if(this.state.cur !== "user")
           tab = "tab-pane profile";
         return (
           <div className={tab} id="profile">

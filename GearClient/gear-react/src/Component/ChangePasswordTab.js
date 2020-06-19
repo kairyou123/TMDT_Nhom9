@@ -8,6 +8,7 @@ class ChangePasswordTab extends React.Component {
         user: this.props.userdata2,
         password: "",
         passwordCheck: "",
+        cur: this.props.cur,
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -57,7 +58,7 @@ class ChangePasswordTab extends React.Component {
         }
         
       if(!this.state.password.match(/^(?=.*[a-z])(?=.*\d)(?=.*[A-Z])(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{4,}$/) && this.state.password !== ""){
-        reject("Mật khẩu ít nhất 4 chữ cái và có ít nhất 1 chữ in hoa, 1 chữ thường, 1 chữ số");
+        reject("Mật khẩu ít nhất 4 chữ cái và có ít nhất 1 chữ in hoa, 1 chữ thường, 1 chữ số, với 1 chữ cái đặc biệt");
       }
 
       if(this.state.passwordCheck !== this.state.password){
@@ -68,27 +69,28 @@ class ChangePasswordTab extends React.Component {
     })  
   }
     render() {
+      var tab= "tab-pane";
         return (
-          <div class="tab-pane" id="pass">
-            <h4 class="m-y-2">Change Password</h4>
+          <div className={tab} id="pass">
+            <h4 className="m-y-2">Change Password</h4>
             <form role="form">
-              <div class="form-group row">
-                <label htmlFor="NewPw" class="col-lg-3 col-form-label form-control-label">Mật khẩu mới</label>
-                <div class="col-lg-9">
-                  <input class="form-control" type="password" name="password" onChange={this.handleChange} value={this.state.password} placeholder="********"/>
+              <div className="form-group row">
+                <label htmlFor="NewPw" className="col-lg-3 col-form-label form-control-label">Mật khẩu mới</label>
+                <div className="col-lg-9">
+                  <input className="form-control" type="password" name="password" onChange={this.handleChange} value={this.state.password} placeholder="********"/>
                 </div>
               </div>
-              <div class="form-group row">
-                <label htmlFor="NewPwAgain" class="col-lg-3 col-form-label form-control-label">Nhập lại mật khẩu</label>
-                <div class="col-lg-9">
-                  <input class="form-control" type="password" name="passwordCheck" onChange={this.handleChange} value={this.state.passwordCheck} placeholder="********"/>
+              <div className="form-group row">
+                <label htmlFor="NewPwAgain" className="col-lg-3 col-form-label form-control-label">Nhập lại mật khẩu</label>
+                <div className="col-lg-9">
+                  <input className="form-control" type="password" name="passwordCheck" onChange={this.handleChange} value={this.state.passwordCheck} placeholder="********"/>
                 </div>
               </div>
-              <div class="form-group row">
-                <label class="col-lg-3 col-form-label form-control-label"></label>
-                <div class="col-lg-9">
-                  <input type="reset" class="btn btn-secondary" value="Cancel" />
-                  <input type="button" class="btn btn-primary" onClick={this.handleSubmit} value="Save Changes" />
+              <div className="form-group row">
+                <label className="col-lg-3 col-form-label form-control-label"></label>
+                <div className="col-lg-9">
+                  <input type="reset" className="btn btn-secondary" value="Cancel" />
+                  <input type="button" className="btn btn-primary" onClick={this.handleSubmit} value="Save Changes" />
                 </div>
               </div>
             </form>

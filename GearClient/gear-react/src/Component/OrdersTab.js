@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Oidc from 'oidc-client';
 
 class OrdersTab extends React.Component {
   constructor(props) {
@@ -21,6 +20,13 @@ class OrdersTab extends React.Component {
 
   async componentDidMount(){
     this.getorder();
+  }
+
+  componentWillReceiveProps(nextProps)
+  {    
+      this.setState({
+        cur: nextProps.cur,
+      });  
   }
 
   getorder(){
@@ -177,26 +183,26 @@ class OrdersTab extends React.Component {
       });
 
       var pagination = [];
-        pagination.push(<li classNameName="page-item" key={0}>
-                        <span classNameName="page-link" href="#" aria-label="Previous">
+        pagination.push(<li className="page-item" key={0}>
+                        <span className="page-link" href="#" aria-label="Previous">
                             <span aria-hidden="true" data-page={parseInt(currentPage) === 1 ? currentPage : (parseInt(currentPage) - 1)} onClick={this.goToPage}>&laquo;</span>
-                            <span classNameName="sr-only">Previous</span>
+                            <span className="sr-only">Previous</span>
                         </span>
                         </li>);
 
         for (var i = 0; i < totalPage; i++) {
             if((i+1) === parseInt(currentPage)){
-                pagination.push(<li classNameName="page-item active" key={i+1}><span classNameName="page-link" data-page={i+1} onClick={this.goToPage}>{i+1}</span></li>);
+                pagination.push(<li className="page-item active" key={i+1}><span className="page-link" data-page={i+1} onClick={this.goToPage}>{i+1}</span></li>);
             }
             else {
-                pagination.push(<li classNameName="page-item" key={i+1}><span classNameName="page-link" data-page={i+1} onClick={this.goToPage}>{i+1}</span></li>);
+                pagination.push(<li className="page-item" key={i+1}><span className="page-link" data-page={i+1} onClick={this.goToPage}>{i+1}</span></li>);
             }
         }
         
-        pagination.push(<li classNameName="page-item" key={totalPage+1}>
-                    <span classNameName="page-link" href="#" aria-label="Next">
+        pagination.push(<li className="page-item" key={totalPage+1}>
+                    <span className="page-link" href="#" aria-label="Next">
                         <span aria-hidden="true" data-page={parseInt(this.state.currentPage) === totalPage ? totalPage : (parseInt(currentPage) + 1)} onClick={this.goToPage}>&raquo;</span>
-                        <span classNameName="sr-only">Next</span>
+                        <span className="sr-only">Next</span>
                     </span>
                     </li>);
 
@@ -204,152 +210,12 @@ class OrdersTab extends React.Component {
           <div className={tab} id="orders">
             <div className="accordion" id="accordionExample">
               {oList}
-              {/* <div className="card">
-                <div className="card-header" id="headingOne">
-                  <h2 className="mb-0">
-                    <button className="btn btn-link w-100" type="button" data-toggle="collapse" data-target="#collapseOne"
-                      aria-expanded="true" aria-controls="collapseOne">
-                      <div>
-                        <p className="float-left">Ma don hang: <b className="code">#100</b></p>
-                        <p className="text-center status d-inline-block">Dang giao</p>
-                        <p className="float-right date">2020/05/27 12:42:59</p>
-                      </div>
-                    </button>
-                  </h2>
-                </div>
-        
-                <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                  <div className="card-body orders">
-                    <div className="table-responsive">
-                      <table className="table table-orders">
-                        <thead>
-                          <tr>
-                            <th className="table-orders--img"></th>
-                            <th className="table-orders--name">Sản phẩm</th>
-                            <th className="table-orders--quantily">Số lượng</th>
-                            <th className="table-orders--price text-center">Giá tiền</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td className="table-orders--img"><a href="#"><img src="images/loa-1.jpg" alt="img" /></a></td>
-                            <td className="table-orders--name"><a href="#">Bàn phím Leopold FC980C Black Silent Topre Switches</a>
-                            </td>
-                            <td className="table-orders--quantily">2</td>
-                            <td className="table-orders--price text-center">4.000.000 VNĐ</td>
-                          </tr>
-                        </tbody>
-                        <tbody>
-                          <tr>
-                            <td className="table-orders--img"><a href="#"><img src="images/tainghe-1.jpg" alt="img" /></a></td>
-                            <td className="table-orders--name"><a href="#">Bàn phím Leopold FC980C Black Silent Topre Switches</a>
-                            </td>
-                            <td className="table-orders--quantily">2</td>
-                            <td className="table-orders--price text-center">4.000.000 VNĐ</td>
-                          </tr>
-                        </tbody>
-                        <tbody>
-                          <tr>
-                            <td className="table-orders--img"><a href="#"><img src="images/tainghe.jpg" alt="img" /></a></td>
-                            <td className="table-orders--name"><a href="#">Bàn phím Leopold FC980C Black Silent Topre Switches</a>
-                            </td>
-                            <td className="table-orders--quantily">2</td>
-                            <td className="table-orders--price text-center">4.000.000 VNĐ</td>
-                          </tr>
-                        </tbody>
-                        <tbody>
-                          <tr className="table-orders--total">
-                            <td colspan="2" className="text-right font-weight-bold">Tổng tiền:</td>
-                            <td colspan="2" className="text-right font-weight-bold">150.000.000 VNĐ</td>
-                          </tr>
-                        </tbody>
-                        <tbody>
-                          <tr className="table-orders--total">
-                            <td colspan="4" className="text-center font-weight-bold">
-                              <button type="button" className="btn btn-danger">Hủy Đơn</button></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="card">
-                <div className="card-header" id="headingOne">
-                  <h2 className="mb-0">
-                    <button className="btn btn-link w-100" type="button" data-toggle="collapse" data-target="#collapseTwo"
-                      aria-expanded="true" aria-controls="collapseTwo">
-                      <div>
-                        <p className="float-left">Ma don hang: <b className="code">#100</b></p>
-                        <p className="text-center status d-inline-block">Dang giao</p>
-                        <p className="float-right date">2020/05/27 12:42:59</p>
-                      </div>
-                    </button>
-                  </h2>
-                </div>
-        
-                <div id="collapseTwo" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                  <div className="card-body orders">
-                    <div className="table-responsive">
-                      <table className="table table-orders">
-                        <thead>
-                          <tr>
-                            <th className="table-orders--img"></th>
-                            <th className="table-orders--name">Sản phẩm</th>
-                            <th className="table-orders--quantily">Số lượng</th>
-                            <th className="table-orders--price text-center">Giá tiền</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td className="table-orders--img"><a href="#"><img src="images/loa-1.jpg" alt="img" /></a></td>
-                            <td className="table-orders--name"><a href="#">Bàn phím Leopold FC980C Black Silent Topre Switches</a>
-                            </td>
-                            <td className="table-orders--quantily">2</td>
-                            <td className="table-orders--price text-center">4.000.000 VNĐ</td>
-                          </tr>
-                        </tbody>
-                        <tbody>
-                          <tr>
-                            <td className="table-orders--img"><a href="#"><img src="images/tainghe-1.jpg" alt="img" /></a></td>
-                            <td className="table-orders--name"><a href="#">Bàn phím Leopold FC980C Black Silent Topre Switches</a>
-                            </td>
-                            <td className="table-orders--quantily">2</td>
-                            <td className="table-orders--price text-center">4.000.000 VNĐ</td>
-                          </tr>
-                        </tbody>
-                        <tbody>
-                          <tr>
-                            <td className="table-orders--img"><a href="#"><img src="images/tainghe.jpg" alt="img" /></a></td>
-                            <td className="table-orders--name"><a href="#">Bàn phím Leopold FC980C Black Silent Topre Switches</a>
-                            </td>
-                            <td className="table-orders--quantily">2</td>
-                            <td className="table-orders--price text-center">4.000.000 VNĐ</td>
-                          </tr>
-                        </tbody>
-                        <tbody>
-                          <tr className="table-orders--total">
-                            <td colspan="2" className="text-right font-weight-bold">Tổng tiền:</td>
-                            <td colspan="2" className="text-right font-weight-bold">150.000.000 VNĐ</td>
-                          </tr>
-                        </tbody>
-                        <tbody>
-                          <tr className="table-orders--total">
-                            <td colspan="4" className="text-center font-weight-bold">
-                              <button type="button" className="btn btn-danger">Hủy Đơn</button></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </div>
-            <div classNameName="admin-pagination">
-                        <ul classNameName="pagination pagination-centered">
+            <div className="admin-pagination">
+                        <ul className="pagination pagination-centered">
                             {pagination}
                         </ul>
-                </div>
+              </div>
           </div>
         );
     }
