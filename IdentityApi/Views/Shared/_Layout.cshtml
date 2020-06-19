@@ -1,0 +1,95 @@
+﻿@using IdentityServer4.Extensions
+@{
+    string name = null;
+    if (!true.Equals(ViewData["signed-out"]))
+    {
+        name = Context.User?.GetDisplayName();
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+    <title>Trang Đăng Nhập</title>
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/main.css" type="text/css">
+    <link rel="stylesheet" href="~/css/fontawesome.min.css">
+    <link rel="stylesheet" href="~/css/swiper.min.css">
+    <link rel="stylesheet" href="~/css/svg-with-js.css">
+    <link rel="stylesheet" href="~/css/all.min.css">
+    <link rel="stylesheet" href="~/css/brands.min.css">
+    <link rel="stylesheet" href="~/css/regular.min.css">
+    <link rel="stylesheet" href="~/css/svg-with-js.css">
+    <link rel="stylesheet" href="~/css/solid.min.css">
+    <link rel="stylesheet" href="~/css/v4-shims.min.css">
+    <link rel="stylesheet" href="~/css/gear.css">
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="menu" class="menu">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand padding-gear-40" href="http://localhost:5003/">HHL</a>
+      <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+    </nav>
+  </div>
+
+    @RenderBody()
+
+    <div class="footer" id="footer">
+    <div class="banner-footer">
+      <p>HHL<br />Mua hàng online với nhiều ưu đãi hơn tại HHL</p>
+    </div>
+    <div class="content-footer padding-gear-20">
+      <div class="col-6 content-left-footer"><b>HHL.COM - HI-END PC & GAMING GEAR</b>
+        <br /><b>CÔNG TY TNHH CÔNG NGHỆ HHL</b>
+        <br /><br />Địa chỉ: 273 An Dương Vương, Phường 3, Quận 5, Hồ Chí Minh
+        <br />Điện thoại: 1800 0000 (miễn phí) - Bảo hành: nhánh số 0
+        <br />Email: kinhdoanh@HHL.com
+        <p class="p-blue"><b><br />Hotline: 1800 6975
+            <br />Chính sách bảo mật và hình thức thanh toán</b></p>
+        <br /><b>THỜI GIAN LÀM VIỆC: 08:30 - 21:30 TỪ THỨ 2 ĐẾN CHỦ NHẬT</b>
+        <br /><br />
+        <a href="http://online.gov.vn/CustomWebsiteDisplay.aspx?DocId=52800">
+          <img src="~/images/logobct.png" style="max-width: 400px;">
+        </a>
+      </div>
+      <div class="col-6">
+        <p><b>BẢN ĐỒ TỚI HHL</b><br /><br /></p>
+        <div class="mapouter">
+          <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.669658423677!2d106.68006961428692!3d10.759922362441618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b7c3ed289%3A0xa06651894598e488!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTw6BpIEfDsm4!5e0!3m2!1svi!2s!4v1589361252218!5m2!1svi!2s"
+              frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
+          <style>
+            .mapouter {
+              position: relative;
+              text-align: right;
+              height: 400px;
+            }
+
+            .gmap_canvas {
+              overflow: hidden;
+              background: none !important;
+              height: 400px;
+            }
+          </style>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

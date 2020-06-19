@@ -1,0 +1,19 @@
+.banner-footer {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: #f8f9fa !important;
+  padding: 10px 0;
+}
+
+.content-footer {
+  display: flex;
+  padding-top: 3%;
+  padding-bottom: 3%;
+
+  .content-left-footer {
+    .p-blue {
+      color: #0655a6;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.cart {
+  padding: 0 0 3%;
+
+  .table-cart {
+
+    &--img {
+      width: 15%;
+      vertical-align: inherit !important;
+
+      img {
+        width: 65%;
+      }
+    }
+
+    &--name {
+      width: 38%;
+      vertical-align: inherit !important;
+
+      a {
+
+        font-weight: bold;
+
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+
+    &--quantily {
+      width: 12%;
+      vertical-align: inherit !important;
+
+      .quantily {
+        width: 70%;
+      }
+    }
+
+    &--price {
+      width: 20%;
+      vertical-align: inherit !important;
+    }
+
+    &--trash {
+      width: 5%;
+      vertical-align: inherit !important;
+    }
+
+    &--total {
+      font-size: 1.5em;
+    }
+  }
+}

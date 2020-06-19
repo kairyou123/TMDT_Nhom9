@@ -1,0 +1,61 @@
+﻿@model LoginViewModel
+
+    @if (Model.EnableLocalLogin)
+    {
+        <div class="login-background">
+            <span></span>
+        <div class="gear-login-container">
+            <div class="gear-login-box row">
+            <div class="gear-login-external col-5">
+                @if (Model.VisibleExternalProviders.Any()) {
+                <div class="gear-external-box">
+                    <div class="text-external"><b>Mạng xã hội</b></div>
+                    @foreach (var provider in Model.VisibleExternalProviders)
+                    {     
+                        <a 
+                           asp-controller="External"
+                           asp-action="Challenge"
+                           asp-route-provider="@provider.AuthenticationScheme"
+                           asp-route-returnUrl="@Model.ReturnUrl">
+                           @if (@provider.DisplayName == "Google") {
+                            <div class="gear-external-button-box">Đăng nhập bằng Google+</div>
+                           } else {
+                               <div class="gear-external-button-box">Đăng nhập bằng Facebook</div>
+                           }
+                        </a>
+                    }
+                </div>
+                }
+            </div>
+            <div class="gear-login-common col-7">
+                <div class="gear-register">
+                    <div>Chưa có tài khoản? <a href="http://localhost:5003/sign-up" class="color: blue">Đăng kí</a></div>
+                </div>
+                <div class="gear-input-box">
+                    <form asp-route="Login">
+                     <input type="hidden" asp-for="ReturnUrl" />
+                    <div class="gear-label">Đăng nhập</div>
+                    <partial name="_ValidationSummary" />
+                    <div class="gear-input-box-1">
+                        <label style="display: block" asp-for="Email">Email</label>
+                        <input type="text" class="gear-input" asp-for="Email" autofocus>
+                    </div>
+                    <div class="gear-input-box-1">
+                        <label style="display: block" asp-for="Password">Password</label>
+                        <input type="password" class="gear-input" asp-for="Password" autocomplete="off">
+                    </div>
+
+                    <div class="gear-input-box-1" style="padding-top: 20px">
+                        <button class="gear-login-button" name="button" value="login">Đăng nhập</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+            <span></span>
+        </div>
+    
+    }
+

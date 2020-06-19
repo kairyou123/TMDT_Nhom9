@@ -1,0 +1,62 @@
+.nav-tabs {
+  margin-bottom: 5% !important;
+  padding-top: 3%;
+}
+
+.profile {
+  .p-d {
+    padding-top: calc(.375rem + 1px);
+    padding-bottom: calc(.375rem + 1px);
+  }
+}
+
+.orders {
+  padding: 0 0 3%;
+
+  .table-orders {
+    font-size: 1em;
+
+    &--img {
+      width: 10%;
+      vertical-align: inherit !important;
+
+      img {
+        width: 65%;
+      }
+    }
+
+    &--name {
+      width: 35%;
+      vertical-align: inherit !important;
+
+      a {
+
+        font-weight: bold;
+
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+
+    &--quantily {
+      width: 20%;
+      vertical-align: inherit !important;
+      text-align: center;
+
+      .quantily {
+        width: 70%;
+      }
+    }
+
+    &--price {
+      width: 25%;
+      vertical-align: inherit !important;
+    }
+
+    &--total {
+      font-size: 1.3em;
+      color: #dc3545;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+.checkout {
+  padding: 0 0 3%;
+
+  .table-checkout {
+    font-size: 1em;
+    margin-top: 5%;
+
+    &--img {
+      width: 10%;
+      vertical-align: inherit !important;
+
+      img {
+        width: 65%;
+      }
+    }
+
+    &--name {
+      width: 35%;
+      vertical-align: inherit !important;
+
+      a {
+
+        font-weight: bold;
+
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+
+    &--quantily {
+      width: 20%;
+      vertical-align: inherit !important;
+      text-align: center;
+
+      .quantily {
+        width: 70%;
+      }
+    }
+
+    &--price {
+      width: 25%;
+      vertical-align: inherit !important;
+    }
+
+    &--total {
+      font-size: 1.3em;
+      color: #dc3545;
+    }
+  }
+}

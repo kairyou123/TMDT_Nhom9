@@ -1,0 +1,42 @@
+.menu {
+  .dropdown:hover>.dropdown-menu {
+    display: block;
+  }
+
+  .dropdown {
+    .dropdown-menu {
+      top: 90%;
+      right: -39%;
+    }
+  }
+
+  .form-inline {
+    margin: 0 auto;
+
+    .form-control {
+      width: 75%;
+    }
+  }
+
+  .cart {
+    position: relative;
+    margin-left: -20px;
+    margin-right: 20px;
+
+    .count {
+      background-color: red;
+      padding: 5px;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 0px;
+      left: 20px;
+      border-radius: 20px;
+      z-index: 99;
+      line-height: 8px;
+      color: #fff;
+      font-size: 10px;
+      text-align: center;
+    }
+  }
+}

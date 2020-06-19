@@ -1,0 +1,84 @@
+.padding-gear-40 {
+  padding-left: 40px;
+}
+
+.padding-gear-30 {
+  padding-left: 30px;
+}
+
+.padding-gear-20 {
+  padding-left: 20px;
+}
+
+.gear-login-container {
+  width: 60%;
+  margin: auto;
+}
+.gear-login-box{
+  margin-top:30px;
+  border: 1px solid black;
+}
+.gear-login-common {
+  border-left: 1px solid black;
+}
+
+.gear-input {
+  margin-top: 20px;
+}
+
+.gear-login-external {
+  background: url("~/images/login-background.jpg") no-repeat center;
+  height: 500px;
+}
+.gear-input-box{
+   padding-top: 60px;
+   padding-left: 30px;
+   width: 80%;
+   margin: auto;
+}
+.gear-label {
+  font-size: 25px;
+  padding-bottom: 30px;
+}
+.gear-register{
+  padding-top: 20px;
+  text-align: right;
+}
+.gear-input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: black;
+  width: 90%;
+  height: 30px;
+  margin: 0;
+}
+.gear-input-box-1{
+  margin-top: 10px;
+}
+.gear-login-button{
+  width: 90%;
+  background: #2d94c4;
+  height: 40px;
+  color: white;
+}
+.gear-external-box{
+  margin-top: 80%;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.gear-external-button-box {
+  margin-top: 20px;
+  border: 1px solid white;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: white;
+  font-weight: 500;
+}
+
+.gear-external-button-box:hover {
+  background: #0dbed9;
+}
+.gear-external-box a {
+  text-decoration: none;
+}
