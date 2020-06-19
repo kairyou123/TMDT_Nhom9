@@ -43,7 +43,6 @@ class SearchList extends React.Component {
             }).filter((product) => {  
                 return product.name.toLowerCase().indexOf(this.state.search.toLowerCase()) >-1;
             }); 
-            console.log(filter);
             this.setState({
                 products: filter, 
                 totalPage: Math.ceil(filter.length / this.state.onePageShow),
@@ -92,6 +91,7 @@ class SearchList extends React.Component {
         this.setState({
             currentPage: e.target.attributes.getNamedItem('data-page').value,
         })
+        window.scrollTo(0, 0);
     }
 
     Addcart = async(e)=>{
@@ -199,10 +199,9 @@ class SearchList extends React.Component {
                                 "</span><b class="key-word"><i>{this.state.search}</i></b><span>"</span></p>
                             <div class="float-right">
                                 <label for="Sort">Sắp xếp theo:&nbsp;</label>
-                                <select id="sort">
-                                    <option value="default">Mặc định </option>
+                                <select name="sort" id="sort" value={this.state.sort} onChange={this.handleSubmit}>
                                     <option value="saab">Giá: Tăng dần </option>
-                                    <option value="opel">Giá: Giảm dần </option>
+                                    <option value="opel">Giá Giảm dần</option>
                                 </select>
                             </div>
                         </div>

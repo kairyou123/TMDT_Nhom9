@@ -77,6 +77,7 @@ class ProductList extends React.Component {
             this.setState({
                 products: filter, 
                 catalog : filter[0].catalog.name,
+                currentPage: 1,
                 totalPage: Math.ceil(filter.length / this.state.onePageShow),
             });  
         }
@@ -118,7 +119,8 @@ class ProductList extends React.Component {
     goToPage = (e) => {
         this.setState({
             currentPage: e.target.attributes.getNamedItem('data-page').value,
-        })
+        });
+        window.scrollTo(0, 0);
     }
 
     Addcart = async(e)=>{
